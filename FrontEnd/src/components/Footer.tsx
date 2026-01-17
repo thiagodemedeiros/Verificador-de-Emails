@@ -16,7 +16,7 @@ export default function Footer() {
                 <div className='Footer_itens_informacoes_lista'>
                     <h5>Informações</h5>
                     <div className='Footer_itens_informacoes_lista_itens'>
-                        <a href="/git">Repositório</a>
+                        <a href="https://github.com/thiagodemedeiros/Verificador-de-Emails">Repositório</a>
                     </div>
                 </div>
             </div>
