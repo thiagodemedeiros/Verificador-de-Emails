@@ -70,8 +70,8 @@ Caso a OpenRouter esteja indisponível ou não consiga responder, o sistema auto
 ### 1️⃣ Clonar o Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/thiagodemedeiros/Verificador-de-Emails Verificador-de-Emails
+cd Verificador-de-Emails
 ```
 
 ---
