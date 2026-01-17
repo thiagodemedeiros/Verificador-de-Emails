@@ -14,7 +14,6 @@ def home():
 @app.route('/verificar_email', methods=['POST'])
 def verificar_email():
     data = request.get_json()
-    print(data)
 
     if not data or "email" not in data:
         retorno = {"erro": "Campo 'email' é obrigatório"}
@@ -34,8 +33,6 @@ def verificar_email():
                     status=400
                 )
 
-    print(email)
-
     if not email:
         data = {"erro": "Parâmetro 'email' é obrigatório"}
         return Response(
@@ -43,12 +40,8 @@ def verificar_email():
                     content_type='application/json; charset=utf-8',
                     status=400
                 )
-    
-    print(email)
 
     resposta = publisher_verificador_de_email(email)
-    
-    print(resposta)
 
     return Response(
                 json.dumps(resposta, ensure_ascii=False),

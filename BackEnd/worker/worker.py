@@ -1,4 +1,4 @@
-import pika, json, time, os
+import pika, json, os
 from service.email_app import verificador_de_email
 from dotenv import load_dotenv
 load_dotenv()
@@ -13,11 +13,8 @@ channel.queue_declare(queue='fila_de_email', durable=True)
 
 def callback(ch, method, properties, body):
     email = str(body.decode())
-    print("Recebido:", email)
 
     resultado = verificador_de_email(email)
-
-    print(resultado)
 
     if isinstance(resultado, set):
         resultado = next(iter(resultado))  # pega a string de dentro
@@ -37,8 +34,6 @@ def callback(ch, method, properties, body):
     )
 
     ch.basic_ack(delivery_tag=method.delivery_tag)
-
-    time.sleep(5)
 
 
 channel.basic_consume(queue='fila_de_email', on_message_callback=callback, auto_ack=False)

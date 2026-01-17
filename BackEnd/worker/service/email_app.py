@@ -1,5 +1,5 @@
 def verificador_de_email(email:str):
-    import requests, json, os
+    import requests, json, os, time
     from service.prompts import prompt, prompt2
     from dotenv import load_dotenv
     load_dotenv()
@@ -8,6 +8,7 @@ def verificador_de_email(email:str):
     key_gemini = os.getenv("key_gemini")
 
     # allenai/molmo-2-8b:free
+    time.sleep(2)
     response = requests.post(
         url="https://openrouter.ai/api/v1/chat/completions",
         headers={
@@ -25,9 +26,7 @@ def verificador_de_email(email:str):
     )
 
     if response.status_code != 200:
-        print("Problema com a api do openrouter, usando o google")
         from google import genai
-        from google.genai.errors import ClientError
         try:
             client = genai.Client(api_key=key_gemini)
             response = client.models.generate_content(
@@ -37,7 +36,6 @@ def verificador_de_email(email:str):
             resposta = texto['candidates'][0]['content']['parts'][0]['text'][8:-4]
             texto = json.loads(resposta)
         except:
-            print("Limite de cota atingido. Tente novamente mais tarde.")
             return {"resposta_texto": "Limite de cota atingido. Tente novamente mais tarde."}
         
         try:
