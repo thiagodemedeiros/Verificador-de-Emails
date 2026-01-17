@@ -5,6 +5,7 @@ type VerificacaoEmailResponse = {
     classificacao_do_email: string;
     justificativa: string;
     sugestao: string;
+    sugestão: string;
 };
 
 export default function HomeSection1() {
@@ -48,8 +49,8 @@ export default function HomeSection1() {
         setClassificacaoDoEmail(data.classificacao_do_email);
         console.log(data.justificativa);
         // setJustificativa(data.justificativa);
-        console.log(data.sugestao);
-        setSugestao(data.sugestao);
+        const sugestao = data.sugestao ?? data["sugestão"];
+        setSugestao(sugestao);
 
         setRespostaApi("chegou");
     }
