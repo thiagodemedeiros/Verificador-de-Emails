@@ -56,7 +56,8 @@ Caso a OpenRouter esteja indisponível ou não consiga responder, o sistema auto
 
 - React
 - TypeScript
-- Vite&#x20;
+- Vite
+- Npm 10.9.2
 
 ### Infraestrutura
 
